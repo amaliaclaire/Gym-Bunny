@@ -1,12 +1,12 @@
 # Gym-Bunny-Proposal-
 
-#What is Gym Bunny? 
+# What is Gym Bunny? 
 * Weight Lifting Tracker 
 
 Lifting heavy weights and the goal of becoming strong rather than skinny has not only become more acceptable, it's becoming a norm. If the average users on instagram, facebook or pinterest takes a peek at "body goals" or "squats", they will come to the realization that THICK IS IN. 
 
 
-#What Problem does Gym Bunny Solve? 
+# What Problem does Gym Bunny Solve? 
 - femininity & weight training are not mutual exclusive. The App is geared towards women, but anyone can be powerful & beautiful while lifting. 
 - Keeps track of your weight goals. 
 - Motivation to look sexy & strong. Muscular women should not be afraid to show their strength. 
