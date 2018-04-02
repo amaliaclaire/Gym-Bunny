@@ -11,6 +11,7 @@ Lifting heavy weights and the goal of becoming strong rather than skinny has not
 - Keeps track of your weight goals. 
 - Motivation to look sexy & strong. Muscular women should not be afraid to show their strength. 
 - Free weights are known to be male dominanted. This app will encourage women to embrace their strength, push their limits and track their goals 
+- Emoji's for different work outs. Arms, shoulders, booty, legs. 
 
 #Features 
 - mobile responsive 
