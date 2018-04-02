@@ -13,7 +13,7 @@ Lifting heavy weights and the goal of becoming strong rather than skinny has not
 - Free weights are known to be male dominanted. This app will encourage women to embrace their strength, push their limits and track their goals 
 - Emoji's for different work outs. Arms, shoulders, booty, legs, upper body, lowerbody  
 
-#Features 
+# Features 
 - mobile responsive 
 - allows you to track weekly work outs (Monday - Sunday). 
 - Gives motivation quotes that are rendered from an API 
