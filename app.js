@@ -4,8 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
-var gym_bunny = require('./routes/gym_bunny');
+var index = require('./src/routes/index');
+var gym_bunny = require('./src/routes/gym_bunny');
 
 var app = express();
 
