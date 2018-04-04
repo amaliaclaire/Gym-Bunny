@@ -2,7 +2,6 @@
 const model = require('../models/gym_bunny')
 
 function getAllWorkouts (req, res, next) {
-  console.log('hello');
 
     const workouts = model.getAll()
     .then(workouts => {
@@ -11,4 +10,22 @@ function getAllWorkouts (req, res, next) {
     .catch(err => next(err))
 }
 
-module.exports = {getAllWorkouts}
+function getSingleWorkout (req, res, next) {
+  let id = req.params.id
+  const singleWorkout = model.getWorkoutById(id)
+  .then(workout => {
+    res.json(workout)
+  })
+  .catch(err => next(err))
+}
+
+function createWorkout (req, res, next) {
+  let {name, user_id} = req.body
+
+  model.createWorkout(name, user_id)
+  .then(workout => {
+    res.json(workout)
+  })
+  .catch(err => next(err))
+}
+module.exports = {getAllWorkouts, getSingleWorkout, createWorkout}
