@@ -2,7 +2,6 @@
 const model = require('../models/gym_bunny')
 
 function getAllWorkouts (req, res, next) {
-
     const workouts = model.getAll()
     .then(workouts => {
       res.json(workouts)
@@ -37,4 +36,13 @@ function updateWorkout (req, res, next) {
   })
   .catch(err => next(err))
 }
+
+// function deleteWorkout (req, res, next) {
+//   let id = req.params.id
+//   model.deleteWorkoutById(id)
+//   .then(workout => {
+//     res.json(workout)
+//   })
+//   .catch(err => next(err))
+// }
 module.exports = {getAllWorkouts, getSingleWorkout, createWorkout, updateWorkout}

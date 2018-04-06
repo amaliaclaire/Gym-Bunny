@@ -4,7 +4,8 @@ const knex = require('../../db/connection.js')
 
 
 function getAll () {
-  return knex('workouts')
+  return knex.from('workouts')
+  .innerJoin('exercises', 'workouts.id', 'exercises.workout_id')
 
 }
 
@@ -27,6 +28,12 @@ function updateSingleWorkout (name, user_id) {
   .update({name: name}, '*')
   .where('user_id', user_id)
 }
+
+// function deleteWorkoutById (id) {
+//   return knex('workouts')
+//   .where({id: id}, '*')
+//   .del()
+// }
 module.exports = {
   getAll, getWorkoutById, createWorkout, updateSingleWorkout
 }
