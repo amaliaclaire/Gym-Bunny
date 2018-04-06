@@ -28,4 +28,13 @@ function createWorkout (req, res, next) {
   })
   .catch(err => next(err))
 }
-module.exports = {getAllWorkouts, getSingleWorkout, createWorkout}
+
+function updateWorkout (req, res, next) {
+  let {name, user_id} = req.body
+  model.updateSingleWorkout(name, user_id)
+  .then(workout => {
+    res.json(workout)
+  })
+  .catch(err => next(err))
+}
+module.exports = {getAllWorkouts, getSingleWorkout, createWorkout, updateWorkout}

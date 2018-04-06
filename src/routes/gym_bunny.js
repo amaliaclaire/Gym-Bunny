@@ -6,6 +6,7 @@ const ctrl = require('../controllers/gym_bunny')
 router.get('/workouts', ctrl.getAllWorkouts)
 router.get('/workouts/:id', ctrl.getSingleWorkout)
 router.post('/workouts', ctrl.createWorkout)
+router.put('/workouts/:id', ctrl.updateWorkout)
 
 
 module.exports = router;

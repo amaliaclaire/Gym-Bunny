@@ -21,6 +21,12 @@ function createWorkout (name, user_id) {
     user_id
   })
 }
+
+function updateSingleWorkout (name, user_id) {
+  return knex('workouts')
+  .update({name: name}, '*')
+  .where('user_id', user_id)
+}
 module.exports = {
-  getAll, getWorkoutById, createWorkout
+  getAll, getWorkoutById, createWorkout, updateSingleWorkout
 }
