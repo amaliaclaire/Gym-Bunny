@@ -9,6 +9,14 @@ function getAllWorkouts (req, res, next) {
     .catch(err => next(err))
 }
 
+function workoutsWithExercises (req, res, next) {
+  const workoutsAndExercises = model.getAllExercisesWithWorkoutsNested()
+    .then(workoutsAndExercises => {
+      res.json(workoutsAndExercises)
+    })
+    .catch(err => next(err))
+}
+
 function getSingleWorkout (req, res, next) {
   let id = req.params.id
   const singleWorkout = model.getWorkoutById(id)
@@ -37,12 +45,12 @@ function updateWorkout (req, res, next) {
   .catch(err => next(err))
 }
 
-// function deleteWorkout (req, res, next) {
-//   let id = req.params.id
-//   model.deleteWorkoutById(id)
-//   .then(workout => {
-//     res.json(workout)
-//   })
-//   .catch(err => next(err))
-// }
-module.exports = {getAllWorkouts, getSingleWorkout, createWorkout, updateWorkout}
+function deleteWorkout (req, res, next) {
+  let id = req.params.id
+  model.deleteWorkoutById(id)
+  .then(workout => {
+    res.json(workout)
+  })
+  .catch(err => next(err))
+}
+module.exports = {getAllWorkouts, getSingleWorkout, createWorkout, updateWorkout, deleteWorkout, workoutsWithExercises}

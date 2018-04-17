@@ -1,15 +1,20 @@
 const express = require('express');
 const app = express()
 const path = require('path');
-const logger = require('morgan');
+// const logger = require('morgan');
 const bodyParser = require('body-parser');
 const morgan = require('morgan')
 const port = process.env.PORT || 3001
+const cors = require('cors')
 
 
 app.disable('x-powered-by')
 app.use(morgan('dev'))
 app.use(bodyParser.json())
+app.use(cors())
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 var index = require('./src/routes/index');
 var gym_bunny = require('./src/routes/gym_bunny');
@@ -19,13 +24,12 @@ app.use('/', gym_bunny);
 
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'hbs');
 
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(logger('dev'));
+
+// app.use(express.static(path.join(__dirname, 'public')));
 
 const listener = () => console.log(`listening on port ${port}`);
 app.listen(port, listener)
@@ -45,7 +49,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.send('error');
 });
 
 module.exports = app;
