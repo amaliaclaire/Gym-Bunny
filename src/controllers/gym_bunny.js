@@ -10,11 +10,16 @@ function getAllWorkouts (req, res, next) {
 }
 
 function workoutsWithExercises (req, res, next) {
+  debugger
   const workoutsAndExercises = model.getAllExercisesWithWorkoutsNested()
     .then(workoutsAndExercises => {
+      debugger
       res.json(workoutsAndExercises)
     })
-    .catch(err => next(err))
+    .catch(err => {
+      debugger
+      next(err)
+    })
 }
 
 function getSingleWorkout (req, res, next) {

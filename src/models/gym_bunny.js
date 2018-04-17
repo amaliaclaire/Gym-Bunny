@@ -9,19 +9,17 @@ function getAll () {
 
 function getAllExercisesWithWorkoutsNested () {
   return knex('workouts')
-  // .innerJoin('exercises', 'workouts.id', 'exercises.workout_id')
-  // .then(exercisesAndWorkouts => {
-  //   return exercisesAndWorkouts
-
   .then(workouts => {
     const promises = workouts.map(workout => {
-      return knex('exercises').where({workout_id: workouts.id})
+      return knex('exercises').where({workout_id: workout.id})
       .then(exercises => {
-        workout.exercises = exercisesAndWork
-        return exercise
+        workout.exercises = exercises
+        return workout
+        console.log('workout', workout);
       })
     })
     return Promise.all(promises)
+    // console.log('promises', promises);
   })
 }
 
