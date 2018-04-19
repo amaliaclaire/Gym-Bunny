@@ -9,6 +9,14 @@ exports.seed = (knex) => {
         sets: 4,
         reps: 10,
         workout_id: 1
+      },
+      {
+        id: 2,
+        name: 'Cable Fly',
+        weight: 15,
+        sets: 4,
+        reps: 10,
+        workout_id: 1
       }
     ])
   }).then(() => {

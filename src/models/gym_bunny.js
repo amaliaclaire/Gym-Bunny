@@ -28,7 +28,8 @@ function getWorkoutById (id) {
   return knex('workouts')
   .innerJoin('exercises', 'workouts.id', 'exercises.workout_id')
   .where('workouts.id', id)
-  .first()
+  .select('workouts.name as workout_name', 'exercises.*')
+  // .first()
 }
 
 function createWorkout (name, user_id) {
