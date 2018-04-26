@@ -32,13 +32,14 @@ function getSingleWorkout (req, res, next) {
 }
 
 function createWorkout (req, res, next) {
+  console.log(req.body);
   let {name, user_id} = req.body
 
   model.createWorkout(name, user_id)
   .then(workout => {
     res.json(workout)
   })
-  .catch(err => next(err))
+  .catch(err => {console.log('err', err);next(err)})
 }
 
 function updateWorkout (req, res, next) {
