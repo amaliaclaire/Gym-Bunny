@@ -10,6 +10,10 @@ router.post('/workouts', ctrl.createWorkout)
 router.put('/workouts/:id', ctrl.updateWorkout)
 router.delete('/workouts/:id', ctrl.deleteWorkout)
 
+// Exercises Routes
+
+router.post('/exercises', ctrl.createExercise)
+
 
 
 module.exports = router;

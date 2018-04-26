@@ -39,7 +39,7 @@ function createWorkout (req, res, next) {
   .then(workout => {
     res.json(workout)
   })
-  .catch(err => {console.log('err', err);next(err)})
+  .catch(err => next(err))
 }
 
 function updateWorkout (req, res, next) {
@@ -59,4 +59,14 @@ function deleteWorkout (req, res, next) {
   })
   .catch(err => next(err))
 }
-module.exports = {getAllWorkouts, getSingleWorkout, createWorkout, updateWorkout, deleteWorkout, workoutsWithExercises}
+
+function createExercise (req, res, next) {
+  let {name, weight, sets, reps} = req.body
+
+  model.createExercise(name, weight, sets, reps, user_id)
+  .then(exercise => {
+    res.json(exercise)
+  })
+  .catch(err => next(err))
+}
+module.exports = {getAllWorkouts, getSingleWorkout, createWorkout, updateWorkout, deleteWorkout, workoutsWithExercises, createExercise}

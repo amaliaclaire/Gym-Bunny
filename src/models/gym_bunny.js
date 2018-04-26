@@ -51,6 +51,18 @@ function deleteWorkoutById (id) {
   .where({id: id}, '*')
   .del()
 }
+
+function createExercise (name, weight, sets, reps, user_id) {
+  return('exercises')
+  .insert({
+    name,
+    weight,
+    sets,
+    reps,
+    user_id
+  })
+
+}
 module.exports = {
-  getAll, getWorkoutById, createWorkout, updateSingleWorkout, deleteWorkoutById, getAllExercisesWithWorkoutsNested
+  getAll, getWorkoutById, createWorkout, updateSingleWorkout, deleteWorkoutById, getAllExercisesWithWorkoutsNested, createExercise
 }
