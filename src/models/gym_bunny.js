@@ -52,17 +52,22 @@ function deleteWorkoutById (id) {
   .del()
 }
 
-function createExercise (name, weight, sets, reps, user_id) {
-  return('exercises')
+function createExercise (name, weight, sets, reps, workout_id) {
+  return knex('exercises')
   .insert({
     name,
     weight,
     sets,
     reps,
-    user_id
+    workout_id
   })
+}
 
+function getByUsername(username) {
+  return knex('users')
+  .where({name: username})
+  .first()
 }
 module.exports = {
-  getAll, getWorkoutById, createWorkout, updateSingleWorkout, deleteWorkoutById, getAllExercisesWithWorkoutsNested, createExercise
+  getAll, getWorkoutById, createWorkout, updateSingleWorkout, deleteWorkoutById, getAllExercisesWithWorkoutsNested, createExercise, getByUsername
 }

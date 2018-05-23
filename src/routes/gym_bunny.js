@@ -14,6 +14,10 @@ router.delete('/workouts/:id', ctrl.deleteWorkout)
 
 router.post('/exercises', ctrl.createExercise)
 
+// user routes
+
+router.post('/login', ctrl.loginToUser)
+
 
 
 module.exports = router;

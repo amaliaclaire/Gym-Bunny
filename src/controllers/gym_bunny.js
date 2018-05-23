@@ -1,5 +1,9 @@
 
 const model = require('../models/gym_bunny')
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken')
+const secret = 'secret'
+
 
 function getAllWorkouts (req, res, next) {
     const workouts = model.getAll()
@@ -61,12 +65,35 @@ function deleteWorkout (req, res, next) {
 }
 
 function createExercise (req, res, next) {
-  let {name, weight, sets, reps} = req.body
+  let {exercise_name, exercise_weight, exercise_sets, exercise_reps, workout_id} = req.body
 
-  model.createExercise(name, weight, sets, reps, user_id)
+  model.createExercise(exercise_name, exercise_weight, exercise_sets, exercise_reps, workout_id)
   .then(exercise => {
     res.json(exercise)
   })
   .catch(err => next(err))
 }
-module.exports = {getAllWorkouts, getSingleWorkout, createWorkout, updateWorkout, deleteWorkout, workoutsWithExercises, createExercise}
+
+// login to user
+
+function loginToUser (req, res, next) {
+  let {username, password} = req.body
+  let id
+  model.getByUsername(username)
+  .then(user => {
+    id = user.id
+    return bcrypt.compare(password, hash)
+  }).then(result => {
+    if (result === true) {
+      return jwt.sign ({id}, secret, { expiresIn: '30 day'})
+    } else {
+      throw Error
+    }
+  }).then(token => {
+    res.status(201).set('Authorization', `Bearer: ${token} `).json({ result: 'logged in accepted'})
+  })
+  .catch(err => next(err))
+}
+
+
+module.exports = {getAllWorkouts, getSingleWorkout, createWorkout, updateWorkout, deleteWorkout, workoutsWithExercises, createExercise, loginToUser}
