@@ -17,6 +17,7 @@ router.post('/exercises', ctrl.createExercise)
 // user routes
 
 router.post('/login', ctrl.loginToUser)
+router.post('/signUp', ctrl.signUpUser)
 
 
 

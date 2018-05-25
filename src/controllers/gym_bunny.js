@@ -79,11 +79,17 @@ function createExercise (req, res, next) {
 function loginToUser (req, res, next) {
   let {username, password} = req.body
   let id
+  let hashedPassword
   model.getByUsername(username)
   .then(user => {
+    console.log('user:', user);
     id = user.id
-    return bcrypt.compare(password, hash)
+    hashedPassword = user.password
+
+    return bcrypt.compare(password, hashedPassword)
   }).then(result => {
+    console.log('result: ', result);
+    // result is from line 85
     if (result === true) {
       return jwt.sign ({id}, secret, { expiresIn: '30 day'})
     } else {
@@ -95,5 +101,13 @@ function loginToUser (req, res, next) {
   .catch(err => next(err))
 }
 
+function signUpUser (req, res, next) {
+  let {username, password} = req.body
+  let id
 
-module.exports = {getAllWorkouts, getSingleWorkout, createWorkout, updateWorkout, deleteWorkout, workoutsWithExercises, createExercise, loginToUser}
+  model.signUpUser(username, password) {
+
+  }
+}
+
+module.exports = {getAllWorkouts, getSingleWorkout, createWorkout, updateWorkout, deleteWorkout, workoutsWithExercises, createExercise, loginToUser, signUpUser}

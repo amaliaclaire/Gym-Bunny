@@ -16,10 +16,10 @@ app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-var index = require('./src/routes/index');
+// var index = require('./src/routes/index');
 var gym_bunny = require('./src/routes/gym_bunny');
 
-app.use('/', index);
+// app.use('/', index);
 app.use('/', gym_bunny);
 
 

@@ -64,10 +64,15 @@ function createExercise (name, weight, sets, reps, workout_id) {
 }
 
 function getByUsername(username) {
+  console.log('username:', username);
   return knex('users')
   .where({name: username})
   .first()
 }
+
+function signUpUser (username, password) {
+
+}
 module.exports = {
-  getAll, getWorkoutById, createWorkout, updateSingleWorkout, deleteWorkoutById, getAllExercisesWithWorkoutsNested, createExercise, getByUsername
+  getAll, getWorkoutById, createWorkout, updateSingleWorkout, deleteWorkoutById, getAllExercisesWithWorkoutsNested, createExercise, getByUsername, signUpUser
 }
