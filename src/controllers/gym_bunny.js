@@ -3,6 +3,10 @@ const model = require('../models/gym_bunny')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
 const secret = 'secret'
+const saltRounds = 10;
+const salt = bcrypt.genSaltSync(saltRounds);
+
+
 
 
 function getAllWorkouts (req, res, next) {
@@ -104,10 +108,27 @@ function loginToUser (req, res, next) {
 function signUpUser (req, res, next) {
   let {username, password} = req.body
   let id
+  let hashedPassword = bcrypt.hashSync(password, salt)
+  console.log('password + hash:', password, hashedPassword);
 
-  model.signUpUser(username, password) {
+  model.getByUsername(username)
+  .then(user => {
+    if(!user) {
+      return model.signUpUser(username, password)
+    } else {
+      throw Error("username is already taken. Please create new username")
+    }
+  }).then(newUser => {
+
+    // send a good status & send a good message (201)
+  })
+  .catch(err => next (err))
+
+  // when i'm registering if the username is ALREADY taken (check in the database) then call an error
+
+
 
   }
-}
+
 
 module.exports = {getAllWorkouts, getSingleWorkout, createWorkout, updateWorkout, deleteWorkout, workoutsWithExercises, createExercise, loginToUser, signUpUser}
