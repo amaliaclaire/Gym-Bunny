@@ -122,11 +122,7 @@ function signUpUser (req, res, next) {
     res.status(201).json({result: `${newUser[0]} has been created`})
   })
   .catch(err => next (err))
-
-  // when i'm registering if the username is ALREADY taken (check in the database) then call an error
-
-
-
+  
   }
 
 
