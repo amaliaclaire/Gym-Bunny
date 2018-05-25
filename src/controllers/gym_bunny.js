@@ -109,18 +109,17 @@ function signUpUser (req, res, next) {
   let {username, password} = req.body
   let id
   let hashedPassword = bcrypt.hashSync(password, salt)
-  console.log('password + hash:', password, hashedPassword);
 
   model.getByUsername(username)
   .then(user => {
     if(!user) {
-      return model.signUpUser(username, password)
+      return model.signUpUser(username, hashedPassword)
     } else {
       throw Error("username is already taken. Please create new username")
     }
   }).then(newUser => {
-
-    // send a good status & send a good message (201)
+    console.log('newUser', newUser);
+    res.status(201).json({result: `${newUser[0]} has been created`})
   })
   .catch(err => next (err))
 

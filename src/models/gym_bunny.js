@@ -69,12 +69,13 @@ function getByUsername(username) {
   .first()
 }
 
-function signUpUser (username, password) {
-  console.log('username+pw:', username, password);
+function signUpUser (username, hashedPassword) {
+  console.log('username+pw:', username, hashedPassword);
   return knex('users')
+  .returning('name')
   .insert({
-    username,
-    password
+    name: username,
+    password: hashedPassword
   })
 }
 module.exports = {
