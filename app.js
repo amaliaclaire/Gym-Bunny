@@ -7,11 +7,15 @@ const morgan = require('morgan')
 const port = process.env.PORT || 3001
 const cors = require('cors')
 
+let corsOptions = {
+  exposedHeaders: ['Content-Type', 'Authorization']
+}
+
 
 app.disable('x-powered-by')
 app.use(morgan('dev'))
 app.use(bodyParser.json())
-app.use(cors())
+app.use(cors(corsOptions))
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

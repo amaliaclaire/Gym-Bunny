@@ -65,8 +65,8 @@ function createExercise (name, weight, sets, reps, workout_id) {
 
 function getByUsername(username) {
   return knex('users')
-  .where({name: username})
-  .first()
+    .where({name: username})
+    .first()
 }
 
 function signUpUser (username, hashedPassword) {

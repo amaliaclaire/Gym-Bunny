@@ -84,6 +84,7 @@ function loginToUser (req, res, next) {
   let {username, password} = req.body
   let id
   let hashedPassword
+  console.log(req.body);
   model.getByUsername(username)
   .then(user => {
     console.log('user:', user);
@@ -97,7 +98,7 @@ function loginToUser (req, res, next) {
     if (result === true) {
       return jwt.sign ({id}, secret, { expiresIn: '30 day'})
     } else {
-      throw Error
+      throw new Error("Invalid user ID or password")
     }
   }).then(token => {
     res.status(201).set('Authorization', `Bearer: ${token} `).json({ result: 'logged in accepted'})
@@ -122,7 +123,7 @@ function signUpUser (req, res, next) {
     res.status(201).json({result: `${newUser[0]} has been created`})
   })
   .catch(err => next (err))
-  
+
   }
 
 
