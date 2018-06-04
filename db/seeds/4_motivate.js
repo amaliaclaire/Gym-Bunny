@@ -5,6 +5,14 @@ exports.seed = (knex) => {
       {
         id: 1,
         description: 'thick thighs and pretty eyes',
+      },
+      {
+        id: 2,
+        description: 'sweat like a pig to look like a fox',
+      },
+      {
+        id: 3,
+        description: 'thank god for thick girls',
       }
     ])
   }).then(() => {
