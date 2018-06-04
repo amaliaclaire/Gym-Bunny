@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const ctrl = require('../controllers/gym_bunny')
 
-/* GET users listing. */
+/* GET workouts listing. */
 router.get('/workouts', ctrl.getAllWorkouts)
 router.get('/workouts/:id', ctrl.getSingleWorkout)
 router.get('/workoutsWithExercises', ctrl.workoutsWithExercises)
@@ -18,6 +18,10 @@ router.post('/exercises', ctrl.createExercise)
 
 router.post('/login', ctrl.loginToUser)
 router.post('/signUp', ctrl.signUpUser)
+
+// Motivation Quotes routes
+
+router.get('/motivationQuotes', ctrl.getMotivationalQuotes)
 
 
 

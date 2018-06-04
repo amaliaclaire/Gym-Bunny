@@ -126,5 +126,13 @@ function signUpUser (req, res, next) {
 
   }
 
+  function getMotivationalQuotes (req, res, next) {
+    const quotes = model.getAllMotivationQuotes()
+    .then(quotes => {
+      res.json(quotes)
+    })
+    .catch(err => next(err))
+  }
 
-module.exports = {getAllWorkouts, getSingleWorkout, createWorkout, updateWorkout, deleteWorkout, workoutsWithExercises, createExercise, loginToUser, signUpUser}
+
+module.exports = {getAllWorkouts, getSingleWorkout, createWorkout, updateWorkout, deleteWorkout, workoutsWithExercises, createExercise, loginToUser, signUpUser, getMotivationalQuotes}

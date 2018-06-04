@@ -70,7 +70,6 @@ function getByUsername(username) {
 }
 
 function signUpUser (username, hashedPassword) {
-  console.log('username+pw:', username, hashedPassword);
   return knex('users')
   .returning('name')
   .insert({
@@ -78,6 +77,11 @@ function signUpUser (username, hashedPassword) {
     password: hashedPassword
   })
 }
+
+function getAllMotivationQuotes (quote) {
+  return knex('motivate')
+}
+
 module.exports = {
-  getAll, getWorkoutById, createWorkout, updateSingleWorkout, deleteWorkoutById, getAllExercisesWithWorkoutsNested, createExercise, getByUsername, signUpUser
+  getAll, getWorkoutById, createWorkout, updateSingleWorkout, deleteWorkoutById, getAllExercisesWithWorkoutsNested, createExercise, getByUsername, signUpUser, getAllMotivationQuotes
 }
