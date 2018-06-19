@@ -13,6 +13,7 @@ router.delete('/workouts/:id', ctrl.deleteWorkout)
 // Exercises Routes
 
 router.post('/exercises', ctrl.createExercise)
+router.delete('/exercises/:id', ctrl.deleteExercise)
 
 // user routes
 

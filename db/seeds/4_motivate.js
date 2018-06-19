@@ -13,6 +13,10 @@ exports.seed = (knex) => {
       {
         id: 3,
         description: 'thank god for thick girls',
+      },
+      {
+        id: 4,
+        description: 'lauren is pretty',
       }
     ])
   }).then(() => {

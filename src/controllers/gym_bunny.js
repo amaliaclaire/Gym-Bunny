@@ -78,6 +78,14 @@ function createExercise (req, res, next) {
   .catch(err => next(err))
 }
 
+function deleteExercise (req, res, next) {
+  let id = req.params.id
+  model.deleteExerciseById(id)
+  .then(exercise => {
+    res.json(exercise)
+  }).catch(err => next(err))
+}
+
 // login to user
 
 function loginToUser (req, res, next) {
@@ -113,6 +121,7 @@ function signUpUser (req, res, next) {
 
   model.getByUsername(username)
   .then(user => {
+    console.log('user', user);
     if(!user) {
       return model.signUpUser(username, hashedPassword)
     } else {
@@ -135,4 +144,4 @@ function signUpUser (req, res, next) {
   }
 
 
-module.exports = {getAllWorkouts, getSingleWorkout, createWorkout, updateWorkout, deleteWorkout, workoutsWithExercises, createExercise, loginToUser, signUpUser, getMotivationalQuotes}
+module.exports = {getAllWorkouts, getSingleWorkout, createWorkout, updateWorkout, deleteWorkout, workoutsWithExercises, createExercise, loginToUser, signUpUser, getMotivationalQuotes, deleteExercise}

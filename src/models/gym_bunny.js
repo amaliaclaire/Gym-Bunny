@@ -63,6 +63,12 @@ function createExercise (name, weight, sets, reps, workout_id) {
   })
 }
 
+function deleteExerciseById(id) {
+  return knex('exercises')
+  .where({id: id}, '*')
+  .del()
+}
+
 function getByUsername(username) {
   return knex('users')
     .where({name: username})
@@ -83,5 +89,5 @@ function getAllMotivationQuotes (quote) {
 }
 
 module.exports = {
-  getAll, getWorkoutById, createWorkout, updateSingleWorkout, deleteWorkoutById, getAllExercisesWithWorkoutsNested, createExercise, getByUsername, signUpUser, getAllMotivationQuotes
+  getAll, getWorkoutById, createWorkout, updateSingleWorkout, deleteWorkoutById, getAllExercisesWithWorkoutsNested, createExercise, getByUsername, signUpUser, getAllMotivationQuotes, deleteExerciseById
 }
